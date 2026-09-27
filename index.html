@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A personal travel memory journal for places, stories, photos and maps." />
+  <title>Wanderlog — Travel Memories</title>
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header"><div class="container nav"><a class="brand" href="#top"><span class="brand-mark">✦</span> Wanderlog</a><nav><a href="#memories">Memories</a><a href="#map-section">Map</a><button class="primary small" id="openEditor">+ New memory</button></nav></div></header>
+  <main id="top">
+    <section class="hero container"><div class="hero-copy"><p class="eyebrow">YOUR PERSONAL TRAVEL ARCHIVE</p><h1>Keep the places<br /><em>worth remembering.</em></h1><p class="hero-text">A simple journal for the trips, little discoveries, meals and moments you want to find again years from now.</p><div class="hero-actions"><button class="primary" id="heroNew">Write a memory</button><a class="secondary" href="#map-section">Explore the map ↓</a></div></div><div class="hero-card"><div class="hero-card-image">🌿</div><div class="hero-card-note"><span>“</span><p>Some places become part of your story.</p></div></div></section>
+    <section class="container stats" aria-label="Travel journal statistics"><div><strong id="memoryCount">0</strong><span>memories</span></div><div><strong id="placeCount">0</strong><span>places</span></div><div><strong id="commentCount">0</strong><span>comments</span></div></section>
+    <section class="container section" id="memories"><div class="section-heading"><div><p class="eyebrow">JOURNAL</p><h2>Your memories</h2></div><label class="search"><span>⌕</span><input id="searchInput" placeholder="Search memories..." /></label></div><div id="memoryGrid" class="memory-grid"></div><div id="emptyState" class="empty-state hidden"><div>🗺️</div><h3>Your travel story starts here.</h3><p>Add your first memory and pin the place on the map.</p><button class="primary" id="emptyNew">Create first memory</button></div></section>
+    <section class="map-section" id="map-section"><div class="container map-heading"><div><p class="eyebrow">WHERE YOU HAVE BEEN</p><h2>Your travel map</h2></div><p>Every memory can have a place. Click a pin to revisit the story.</p></div><div id="map" class="map"></div></section>
+  </main>
+  <footer class="footer"><div class="container"><span>Wanderlog</span><span>Built for memories, not metrics.</span></div></footer>
+  <dialog id="editorDialog"><form method="dialog" id="memoryForm" class="editor"><div class="modal-head"><div><p class="eyebrow">NEW MEMORY</p><h2>Write it down.</h2></div><button type="button" class="icon-btn" id="closeEditor" aria-label="Close">×</button></div><label>Title<input name="title" required maxlength="100" placeholder="e.g. Rainy afternoon in Kyoto" /></label><div class="two-col"><label>Date<input name="date" type="date" required /></label><label>Location<input name="location" id="locationInput" required maxlength="120" placeholder="e.g. Kyoto, Japan" /></label></div><div class="location-help" id="locationHelp">Enter a place name; the map coordinates will be looked up automatically.</div><label>Story<textarea name="story" required rows="6" maxlength="5000" placeholder="What do you want to remember about this place?"></textarea></label><label>Photos <span class="optional">(local preview for now)</span><input id="photoInput" type="file" accept="image/*" multiple /><div id="photoPreview" class="photo-preview"></div></label><input type="hidden" name="lat" id="latInput" /><input type="hidden" name="lng" id="lngInput" /><div class="form-actions"><button type="button" class="secondary" id="cancelEditor">Cancel</button><button class="primary" value="save">Save memory</button></div></form></dialog>
+  <dialog id="detailDialog"><article class="detail"><button class="icon-btn detail-close" id="closeDetail">×</button><div id="detailContent"></div></article></dialog>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script><script src="app.js"></script>
+</body>
+</html>
